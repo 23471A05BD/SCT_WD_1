@@ -1,0 +1,154 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyMart Interactive Navbar</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(135deg, #f0f4f8, #d9e4f5);
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(90deg, #1e3c72, #2a5298);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      box-sizing: border-box;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      z-index: 1000;
+    }
+
+    .navbar.scrolled {
+      box-shadow: 0 2px 12px rgba(0,0,0,0.5);
+    }
+
+    .brand {
+      color: #fff;
+      font-size: 1.7em;
+      text-decoration: none;
+    }
+
+    .menu {
+      display: flex;
+      gap: 20px;
+    }
+
+    .menu a {
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: 600;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .menu a:hover {
+      background-color: #ff7f50;
+      color: #fff;
+    }
+
+    .info-display {
+      margin-top: 120px;
+      padding: 30px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      font-size: 1.2em;
+      max-width: 600px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="brand">🛒 MyMart</div>
+    <div class="menu">
+      <a id="homeLink">Home</a>
+      <a id="aboutLink">About</a>
+      <a id="servicesLink">Services</a>
+      <a id="offersLink">Offers</a>
+      <a id="contactLink">Contact</a>
+    </div>
+  </nav>
+
+  <div class="info-display" id="infoDisplay">
+    Click on a menu item to see detailed information here.
+  </div>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    const infoDisplay = document.getElementById('infoDisplay');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    document.getElementById('homeLink').addEventListener('click', () => {
+      infoDisplay.innerHTML = `
+        🏠 <strong>Welcome to MyMart!</strong><br>
+        Browse thousands of products across multiple categories.<br>
+        Enjoy seamless shopping from the comfort of your home.<br>
+        New arrivals every week just for you!
+      `;
+    });
+
+    document.getElementById('aboutLink').addEventListener('click', () => {
+      infoDisplay.innerHTML = `
+        ℹ️ <strong>About MyMart</strong><br>
+        We are passionate about delivering quality at the best prices.<br>
+        Serving millions of happy customers since 2010.<br>
+        Committed to sustainability and customer satisfaction.
+      `;
+    });
+
+    document.getElementById('servicesLink').addEventListener('click', () => {
+      infoDisplay.innerHTML = `
+        🛎️ <strong>Our Services</strong><br>
+        Fast and reliable home delivery within 24 hours.<br>
+        Hassle-free returns and exchanges within 30 days.<br>
+        24/7 customer support to assist you anytime.
+      `;
+    });
+
+    document.getElementById('offersLink').addEventListener('click', () => {
+      infoDisplay.innerHTML = `
+        🎉 <strong>Exclusive Offers</strong><br>
+        Get up to 50% off on selected categories.<br>
+        Special festive discounts available for a limited time.<br>
+        Join our loyalty program for extra perks!
+      `;
+    });
+
+    document.getElementById('contactLink').addEventListener('click', () => {
+      infoDisplay.innerHTML = `
+        📞 <strong>Contact Us</strong><br>
+        Reach us at <strong>support@mymart.com</strong> for any query.<br>
+        Call us at <strong>+123-456-7890</strong> (9 AM - 9 PM).<br>
+        Follow us on social media for updates and news.
+      `;
+    });
+  </script>
+
+</body>
+</html>
